@@ -23,7 +23,8 @@
 
         <activity
             android:name=".Main"
-            android:label="@string/title_activity_home"></activity>
+            android:label="@string/title_activity_home" />
+        <activity android:name=".SelectedEntry"></activity>
     </application>
 
 </manifest>
