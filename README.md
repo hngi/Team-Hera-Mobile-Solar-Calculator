@@ -1,9 +1,9 @@
-# Team-Hera-Budget-App
+# Team-Hera-Solar-Calculator-App
 
 Task 3 Category 2 for Team Hera - Solar Calculator App
 
 # Project:
-Budget App - This project is a solar calculator app that allows the user input electronics, their power usage and the number of hours the electronics are used. The app then calculates the amount of solar power required to run these electronics. This app is Task 1 for Team Hera working together from one repository for th HNG Internship 6.0. Contribution Guidelines - Read these guidelines carefully. Feel free to reach out, if you have any questions. NB: Please, don't push to master. On your IDE, create a new branch (New branch can be named anything including your name).
+Solar Calculator App - This project is a solar calculator app that allows the user input electronics, their power usage and the number of hours the electronics are used. The app then calculates the amount of solar power required to run these electronics. This app is Task 1 for Team Hera working together from one repository for th HNG Internship 6.0. Contribution Guidelines - Read these guidelines carefully. Feel free to reach out, if you have any questions. NB: Please, don't push to master. On your IDE, create a new branch (New branch can be named anything including your name).
 
 # Steps
 
