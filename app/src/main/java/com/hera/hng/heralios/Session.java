@@ -12,12 +12,27 @@ public class Session {
     private String inverter_power;
     private String battery_size;
 
-    public Session(int id, String total_power_usage, String date, String solar_panel_size, String inverter_power, String battery_size){
+    public void setId(int id){
         this.id = id;
+    }
+
+    public void setTotalPowerUsage(String total_power_usage){
         this.total_power_usage = total_power_usage;
+    }
+
+    public void setDate(String date){
         this.date = date;
+    }
+
+    public void setSolarPanelSize(String solar_panel_size){
         this.solar_panel_size = solar_panel_size;
+    }
+
+    public void setInverterPower(String inverter_power){
         this.inverter_power = inverter_power;
+    }
+
+    public void setBatterySize(String battery_size){
         this.battery_size = battery_size;
     }
 
