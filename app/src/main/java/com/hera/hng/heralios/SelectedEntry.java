@@ -1,5 +1,6 @@
 package com.hera.hng.heralios;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -8,7 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TableRow;
@@ -19,19 +23,60 @@ import java.util.List;
 
 public class SelectedEntry extends AppCompatActivity {
     ListView listView;
-    List<Entry> entry=new ArrayList<Entry>();
+    List<Entry> entry;
+    TextView sessionNumber, solarPower, inverterPower, batterySize, solarPanelSize;
+    DatabaseHelper helper;
+    ImageButton editButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selected_entry);
 
-        Entry nEntry = new Entry("Television","200","5");
-        entry.add(nEntry);
+        Intent intent = getIntent();
+        final String session_no = intent.getStringExtra("session_no");
+
+        helper = new DatabaseHelper(this);
+        entry = helper.getEntries(session_no);
+
+        Session currentSession = helper.getSession(Integer.parseInt(session_no));
+
+        sessionNumber = findViewById(R.id.tv_s);
+        solarPower = findViewById(R.id.tv_solar_power);
+        inverterPower = findViewById(R.id.tv_inverter_power);
+        batterySize = findViewById(R.id.tv_battery_size);
+        solarPanelSize = findViewById(R.id.tv_solar_panel);
 
         MyListAdapter adapter=new MyListAdapter(this, entry);
         listView=(ListView)findViewById(R.id.listView);
         listView.setAdapter(adapter);
+
+        sessionNumber.setText("S"+currentSession.getId());
+        solarPower.setText(currentSession.getTotalPowerUsage()+"WH");
+        inverterPower.setText(currentSession.getInverterPower()+"W");
+        batterySize.setText(currentSession.getBatterySize()+"AH");
+        solarPanelSize.setText(currentSession.getSolarPanelSize());
+
+        editButton = (ImageButton) findViewById(R.id.edit_button);
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplicationContext(), EditCalculation.class);
+                intent1.putExtra("session_no",session_no);
+                getApplicationContext().startActivity(intent1);
+            }
+        });
+
+        /*
+        Electronic electronic = new Electronic();
+        electronic.setName("Television");
+
+        Entry nEntry = new Entry();
+        nEntry.setElectronic(electronic);
+        nEntry.setPowerUsage("200");
+        nEntry.setTime("5");
+
+        entry.add(nEntry);*/
 
         /*
         listView = findViewById(R.id.list_view);
@@ -110,5 +155,13 @@ public class SelectedEntry extends AppCompatActivity {
         ll.addView(ta);
         ll.addView(tb);
         ll.addView(tc);*/
+    }
+    @Override
+    public void onBackPressed() {
+        // super.onBackPressed();
+        Intent intent= new Intent(this,Main.class);
+        startActivity(intent);
+        finish();
+        return;
     }
 }

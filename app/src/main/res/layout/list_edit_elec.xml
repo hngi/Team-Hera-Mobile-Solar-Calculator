@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:focusable="false"
     android:padding="15dp">
-
 
     <TextView
         android:id="@+id/tv_electronic"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:fontFamily="@font/martel_sans_extralight"
+        android:fontFamily="@font/martel_light"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
 
@@ -22,7 +21,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:fontFamily="@font/martel_sans_extralight"
+        android:fontFamily="@font/martel_light"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
@@ -32,9 +31,20 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:fontFamily="@font/martel_sans_extralight"
+        android:fontFamily="@font/martel_light"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
 
+    <ImageButton
+        android:id="@+id/img_edit"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:contentDescription="@string/Edit"
+        android:scaleType="centerInside"
+        android:focusable="false"
+        app:srcCompat="@drawable/edit" />
 </LinearLayout>

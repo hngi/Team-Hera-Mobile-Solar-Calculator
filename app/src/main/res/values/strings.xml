@@ -12,9 +12,20 @@
     <string name="electronic">Electronic</string>
     <string name="power">Power (W)</string>
     <string name="time">Time (Hrs)</string>
+    <string name="electronic_c">Electronic:</string>
+    <string name="power_c">Power (W):</string>
+    <string name="time_c">Time (Hrs):</string>
     <string name="r">R</string>
     <string name="total">Total:</string>
     <string name="SPS">Solar Panel Size:</string>
     <string name="IP">Inverter Power:</string>
-    <string name="BS">Battery Size:</string>
+    <string name="BS">Battery(24V min):</string>
+    <string name="s">s22</string>
+    <string name="Edit">Edit</string>
+    <string name="done">Done</string>
+    <string name="delete">Delete</string>
+    <string name="solar_power">Solar Power:</string>
+    <string name="start">Start</string>
+    <string name="message">To start calculation click on add button</string>
+    <string name="sub_heralios">....the solar calculator application</string>
 </resources>

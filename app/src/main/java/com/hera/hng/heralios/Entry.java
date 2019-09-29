@@ -5,18 +5,44 @@ package com.hera.hng.heralios;
  */
 
 public class Entry {
-    private String electronic_name;
+    private int id;
+    private Electronic electronic;
     private String power_usage;
     private String time;
+    private String session_id;
 
-    public Entry(String electonic_name, String power_usage, String time){
-        this.electronic_name = electonic_name;
-        this.power_usage = power_usage;
-        this.time = time;
+    public void setID(int id){
+        this.id = id;
+    }
+
+    public int getId(){
+        return id;
+    }
+
+    public void setElectronic(Electronic electronic){
+        this.electronic = electronic;
+    }
+
+    public Electronic getElectronic(){
+        return electronic;
+    }
+
+    public String getElectronicId(){
+        String id = ""+electronic.getId();
+        return id;
     }
 
     public String getElectronicName(){
-        return electronic_name;
+        String name = electronic.getName();
+        return name;
+    }
+
+    public void setPowerUsage(String power_usage){
+        this.power_usage = power_usage;
+    }
+
+    public void setTime(String time){
+        this.time = time;
     }
 
     public String getPowerUsage(){
@@ -25,5 +51,13 @@ public class Entry {
 
     public String getTime(){
         return time;
+    }
+
+    public void setSessionID(String session_id){
+        this.session_id = session_id;
+    }
+
+    public String getSession_id(){
+        return session_id;
     }
 }

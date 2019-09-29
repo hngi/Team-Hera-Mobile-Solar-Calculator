@@ -6,5 +6,6 @@
     <color name="colourMain">#CFECFE</color>
     <color name="colourMainT">#31CAEE</color>
     <color name="colourMainY">#FDB43D</color>
+    <color name="colourGrey">#D3D3D3</color>
 
 </resources>
