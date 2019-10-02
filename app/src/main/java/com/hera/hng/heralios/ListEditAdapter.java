@@ -1,9 +1,11 @@
 package com.hera.hng.heralios;
 
 import android.database.DataSetObserver;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -24,10 +26,8 @@ import java.util.List;
 
 public class ListEditAdapter extends BaseAdapter {
     AppCompatActivity context;
-    Entry nEntry;
     List<Entry> entry;
-    String power_usage;
-    String duration_text;
+
     String activityCalling;
     // private final String[] electronic;
     //private final String[] power;
@@ -89,11 +89,11 @@ public class ListEditAdapter extends BaseAdapter {
                  TextView durationText = (TextView) view.findViewById(R.id.tv_time);
                 ImageButton editButton = (ImageButton) view.findViewById(R.id.img_edit);
 
-                nEntry = entry.get(position);
+                final Entry nEntry = entry.get(position);
 
-                String electronic_name=nEntry.getElectronicName();
-                power_usage = nEntry.getPowerUsage();
-                duration_text = nEntry.getTime();
+                final String electronic_name=nEntry.getElectronicName();
+                final String power_usage = nEntry.getEntryPowerUsage();
+                final String duration_text = nEntry.getTime();
 
                 electronicText.setText(electronic_name);
                 powerText.setText(power_usage);
@@ -102,6 +102,7 @@ public class ListEditAdapter extends BaseAdapter {
 
 
                 if(activityCalling.equalsIgnoreCase("newcalculation")){
+                    editButton.setBackground(ContextCompat.getDrawable(context, R.drawable.layout_heading) );
                 editButton.setOnClickListener(new View.OnClickListener() {
 
                     @Override
@@ -123,6 +124,7 @@ public class ListEditAdapter extends BaseAdapter {
                     }
                 });
              }else if(activityCalling.equalsIgnoreCase("editcalculation")){
+                    editButton.setBackground(ContextCompat.getDrawable(context, R.drawable.heading_grey) );
                     editButton.setOnClickListener(new View.OnClickListener() {
 
                         @Override

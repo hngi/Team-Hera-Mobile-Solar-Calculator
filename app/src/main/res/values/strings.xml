@@ -27,5 +27,5 @@
     <string name="solar_power">Solar Power:</string>
     <string name="start">Start</string>
     <string name="message">To start calculation click on add button</string>
-    <string name="sub_heralios">....the solar calculator application</string>
+    <string name="sub_heralios">Solar Calculator App</string>
 </resources>

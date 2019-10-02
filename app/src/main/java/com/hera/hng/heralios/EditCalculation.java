@@ -127,7 +127,7 @@ public class EditCalculation extends AppCompatActivity {
                     double solarPanelSize = 0;
                     for(Entry e: entries){
 
-                        double cPower = calculation.calculateSolarPowerUsage(Double.parseDouble(e.getPowerUsage()), Double.parseDouble(e.getTime()));
+                        double cPower = calculation.calculateSolarPowerUsage(Double.parseDouble(e.getEntryPowerUsage()), Double.parseDouble(e.getTime()));
                         totalPower += cPower;
                         //inverterSize += Double.parseDouble(e.getPowerUsage())
                     }
@@ -178,7 +178,6 @@ public class EditCalculation extends AppCompatActivity {
         }
         adapter.notifyDataSetChanged();
     }
-
 
 
 }

@@ -45,6 +45,7 @@ public class NewCalculation extends AppCompatActivity {
         adapter=new ListEditAdapter(this, entry, "NewCalculation");
         listView=(ListView)findViewById(R.id.lv_listView);
         listView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
         addNew = (FloatingActionButton) findViewById(R.id.fb_add);
         addNew.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +80,7 @@ public class NewCalculation extends AppCompatActivity {
                     double solarPanelSize = 0;
                     for(Entry e: entry){
 
-                        double cPower = calculation.calculateSolarPowerUsage(Double.parseDouble(e.getPowerUsage()), Double.parseDouble(e.getTime()));
+                        double cPower = calculation.calculateSolarPowerUsage(Double.parseDouble(e.getEntryPowerUsage()), Double.parseDouble(e.getTime()));
                         totalPower += cPower;
                         //inverterSize += Double.parseDouble(e.getPowerUsage())
                     }
@@ -126,11 +127,26 @@ public class NewCalculation extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
-        this.adapter.notifyDataSetChanged();
+        Log.i("apple", "I am here2");
+        adapter.notifyDataSetChanged();
     }
 
     public void updateList(List<Entry> list){
-        adapter=new ListEditAdapter(this, list, "EditCalculation");
+        adapter=new ListEditAdapter(this, list, "NewCalculation");
+        listView.setAdapter(adapter);
+
+        //entries.clear();
+        entry=list;
+        for(Entry a:entry){
+            Log.i("apples", a.getElectronicName());
+            Log.i("apples", a.getPowerUsage());
+            Log.i("apples", a.getTime());
+        }
+        adapter.notifyDataSetChanged();
+    }
+
+    public void addList(List<Entry> list){
+        adapter=new ListEditAdapter(this, list, "NewCalculation");
         listView.setAdapter(adapter);
 
         //entries.clear();
