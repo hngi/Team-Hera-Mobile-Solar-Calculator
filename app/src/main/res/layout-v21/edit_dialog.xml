@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="15dp">
 
@@ -13,7 +14,8 @@
         android:background="@color/colourMain"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" tools:targetApi="lollipop" >
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        tools:targetApi="lollipop">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -24,124 +26,86 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/textView15"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:fontFamily="@font/martel_sans"
+        android:padding="10dp"
+        android:text="@string/electronic_c"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_elec"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/martel_sans_extralight"
-            android:text="@string/electronic_c"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
-
-        <Spinner
-            android:id="@+id/sp_elec"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:textAlignment="center"
-            android:textDirection="firstStrong" />
-
-    </LinearLayout>
-
-    <LinearLayout
+    <Spinner
+        android:id="@+id/sp_elec"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:layout_gravity="end"
+        android:gravity="end"
+        android:textAlignment="center"
+        android:textDirection="firstStrong" />
 
-        <TextView
-            android:id="@+id/tv_pow"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/martel_sans_extralight"
-            android:text="@string/power_c"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/ed_pow"
-            style="@android:style/Widget.EditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="@string/power"
-            android:ems="10"
-            android:inputType="number|numberDecimal"
-            android:labelFor="@+id/ed_pow"
-            android:textAlignment="center"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/tv_pow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:fontFamily="@font/martel_sans"
+        android:padding="10dp"
+        android:text="@string/power_c"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_time"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/martel_sans_extralight"
-            android:text="@string/time_c"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/ed_time"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="@string/power"
-            android:ems="10"
-            android:fontFamily="sans-serif"
-            android:inputType="number|numberDecimal"
-            android:labelFor="@+id/ed_time"
-            android:textAlignment="center"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <LinearLayout
+    <EditText
+        android:id="@+id/ed_pow"
+        style="@android:style/Widget.EditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:contentDescription="@string/power"
+        android:ems="10"
+        android:fontFamily="@font/martel_light"
+        android:inputType="number|numberDecimal"
+        android:labelFor="@+id/ed_pow"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btn_delete"
-            style="@android:style/Widget.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/martel_sans_extralight"
-            android:text="@string/delete"
-            android:textAllCaps="true"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/martel_sans"
+        android:padding="10dp"
+        android:text="@string/time_c"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btn_ok"
-            style="@android:style/Widget.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/martel_sans_extralight"
-            android:text="@android:string/ok"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+    <EditText
+        android:id="@+id/ed_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/power"
+        android:ems="10"
+        android:fontFamily="@font/martel_light"
+        android:inputType="number|numberDecimal"
+        android:labelFor="@+id/ed_time"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
+    <Button
+        android:id="@+id/btn_ok"
+        style="@android:style/Widget.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/layout_heading"
+        android:fontFamily="@font/martel_sans_extralight"
+        android:text="@android:string/ok"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
 
 </LinearLayout>

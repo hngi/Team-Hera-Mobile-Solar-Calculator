@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:background="@android:color/white"
     android:focusable="false"
+    android:orientation="horizontal"
     android:padding="15dp">
 
     <TextView
@@ -42,9 +43,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
-        android:background="@android:color/white"
+        android:background="@drawable/heading_grey"
         android:contentDescription="@string/Edit"
         android:scaleType="centerInside"
-        android:focusable="false"
         app:srcCompat="@drawable/edit" />
 </LinearLayout>

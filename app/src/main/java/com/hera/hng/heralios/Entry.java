@@ -7,8 +7,8 @@ package com.hera.hng.heralios;
 public class Entry {
     private int id;
     private Electronic electronic;
-    private String power_usage;
     private String time;
+    private String power_usage;
     private String session_id;
 
     public void setID(int id){
@@ -37,16 +37,21 @@ public class Entry {
         return name;
     }
 
-    public void setPowerUsage(String power_usage){
+    public void setEntryPowerUsage(String power_usage){
         this.power_usage = power_usage;
+    }
+
+    public String getEntryPowerUsage(){
+        return power_usage;
+    }
+
+    public String getPowerUsage(){
+        //this.power_usage = electronic.getPowerUsage();
+        return power_usage;
     }
 
     public void setTime(String time){
         this.time = time;
-    }
-
-    public String getPowerUsage(){
-        return power_usage;
     }
 
     public String getTime(){

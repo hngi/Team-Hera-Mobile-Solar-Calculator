@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -31,10 +32,8 @@ import java.util.List;
  */
 
 public class EditDialog extends DialogFragment {
-    private Listener mListener;
     Button ok;
     Spinner spinner;
-    List<String> electronics_names=new ArrayList<>();
     DatabaseHelper helper;
     EditText power, time;
     Toolbar toolbar;
@@ -53,17 +52,32 @@ public class EditDialog extends DialogFragment {
 
         spinner = (Spinner) view.findViewById(R.id.sp_elec);
 
-        final List<Electronic> electronicsList = helper.getAllElectronics();
+        //power.setClickable(false);
 
-        for(Electronic e: electronicsList){
-            electronics_names.add(e.getName());
-        }
+        final List<Electronic> electronics = helper.getAllElectronics();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this.getContext(), android.R.layout.simple_spinner_item, electronics_names);
+        ElectronicsSpinnerAdapter adapter = new ElectronicsSpinnerAdapter(this.getContext(), electronics);
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                Electronic selectedItem = (Electronic)parent.getItemAtPosition(position);
+                Log.i("apple", "Selected Spinner: "+selectedItem);
+                for(Electronic electronic : electronics){
+                    if(selectedItem.equals(electronic)){
+                        power.setText(electronic.getPowerUsage());
+                    }
+                }
+            } // to close the onItemSelected
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
+            }
+        });
 
         toolbar = (Toolbar) view.findViewById(R.id.my_toolbar);
 
@@ -88,17 +102,17 @@ public class EditDialog extends DialogFragment {
 
                         String t_power = power.getText().toString();
                         String t_time = time.getText().toString();
-                        String selected = spinner.getSelectedItem().toString();
+                        Electronic selected = (Electronic)spinner.getSelectedItem();
 
 
-                    for (Electronic elect : electronicsList) {
-                                if (elect.getName().equalsIgnoreCase(selected)) {
+                    for (Electronic elect : electronics) {
+                                if (elect.equals(selected)) {
                                     entry.setElectronic(elect);
                                 }
                             }
                         entry.setTime(t_time);
-                        entry.setPowerUsage(t_power);
                         entry.setID(entryId);
+                        entry.setEntryPowerUsage(t_power);
 
                         List<Entry> temp = EditCalculation.entries;
                         temp.set(entryPosition, entry);
@@ -159,29 +173,42 @@ public class EditDialog extends DialogFragment {
 
                         String t_power = power.getText().toString();
                         String t_time = time.getText().toString();
-                        String selected = spinner.getSelectedItem().toString();
+                        Electronic selected = (Electronic) spinner.getSelectedItem();
 
 
-                        for (String name : electronics_names) {
-                            for (Electronic elect : electronicsList) {
-                                if (elect.getName().equalsIgnoreCase(selected)) {
+                            for (Electronic elect : electronics) {
+                                if (elect.equals(selected)) {
+                                    elect.getPowerUsage();
                                     entry.setElectronic(elect);
                                 }
                             }
-                        }
+
                         entry.setTime(t_time);
-                        entry.setPowerUsage(t_power);
+                        entry.setEntryPowerUsage(t_power);
+
+
 
                         if(edited.equalsIgnoreCase("edit")) {
                             List<Entry> temp = NewCalculation.entry;
                             temp.set(entryPosition, entry);
 
+                            for(Entry a:temp){
+                                Log.i("barfs", a.getElectronicName());
+                                Log.i("barfs", a.getEntryPowerUsage());
+                                Log.i("barfs", a.getTime());
+                            }
+
                             NewCalculation newCalculation = (NewCalculation) getActivity();
                             newCalculation.updateList(temp);
                         }else {
-                            NewCalculation.entry.add(entry);
                             NewCalculation newCalculation = (NewCalculation) getActivity();
-                            newCalculation.adapter.notifyDataSetChanged();
+                            NewCalculation.entry.add(entry);
+
+                            List<Entry> temp = NewCalculation.entry;
+
+                            Log.i("apple", "I am here");
+                            newCalculation.addList(temp);
+                           // newCalculation.adapter.notifyDataSetChanged();
                         }
 
                         dismiss();
@@ -200,14 +227,6 @@ public class EditDialog extends DialogFragment {
         this.getDialog().setCanceledOnTouchOutside(true);
 
         return view;
-    }
-
-    public void setListener(Listener listener) {
-        mListener = listener;
-    }
-
-    static interface Listener {
-        void returnData();
     }
 
 }

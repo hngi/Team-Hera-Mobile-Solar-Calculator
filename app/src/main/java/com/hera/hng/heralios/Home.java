@@ -93,8 +93,9 @@ public class Home extends Fragment implements AdapterView.OnItemSelectedListener
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-                                           int pos, long id) {
+                                           final int pos, long id) {
                 // TODO Auto-generated method stub
+                final int position = pos;
                 final Session session = sessions.get(pos);
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
                 builder1.setMessage("Delete S"+session.getId());
@@ -107,11 +108,17 @@ public class Home extends Fragment implements AdapterView.OnItemSelectedListener
                                 //
 
                                 helper.deleteSession(session.getId());
-                                sessions.remove(session);
+                                sessions.remove(position);
 
                                 list.requestLayout();
                                 adapter.notifyDataSetChanged();
                                 dialog.cancel();
+
+                                if(sessions.size() ==0){
+                                    message.setVisibility(View.VISIBLE);
+                                }else {
+                                    message.setVisibility(View.GONE);
+                                }
                             }
                         });
 

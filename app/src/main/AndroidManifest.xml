@@ -3,8 +3,8 @@
     package="com.hera.hng.heralios">
 
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:allowBackup="false"
+        android:icon="@mipmap/contrast"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/contrast"
         android:supportsRtl="true"
@@ -26,7 +26,9 @@
             android:label="@string/title_activity_home" />
         <activity android:name=".SelectedEntry" />
         <activity android:name=".NewCalculation" />
-        <activity android:name=".EditCalculation"></activity>
+        <activity android:name=".EditCalculation">
+
+        </activity>
     </application>
 
 </manifest>

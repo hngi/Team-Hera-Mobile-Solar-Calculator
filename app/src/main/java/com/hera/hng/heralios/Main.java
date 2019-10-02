@@ -60,7 +60,10 @@ public class Main extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // super.onBackPressed();
-        finish();
+
+        finishAffinity();
+        System.exit(0);
+
         return;
     }
 

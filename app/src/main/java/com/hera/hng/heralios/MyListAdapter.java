@@ -71,7 +71,7 @@ public class MyListAdapter extends BaseAdapter{
             TextView timeText = (TextView) view.findViewById(R.id.tv_time);
 
             electronicText.setText(nEntry.getElectronicName());
-            powerText.setText(nEntry.getPowerUsage());
+            powerText.setText(nEntry.getEntryPowerUsage());
             timeText.setText(nEntry.getTime());
         }
 
