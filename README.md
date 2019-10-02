@@ -1,4 +1,4 @@
-# Team-Hera-Budget-App
+# Team-Hera-Solar-Calculator-App
 
 Task 3 Category 2 for Team Hera - Solar Calculator App
 
